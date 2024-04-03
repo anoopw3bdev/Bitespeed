@@ -1,0 +1,8 @@
+.text-input-node {
+    border: 1px solid red;
+    width: fit-content;
+    padding: 10px;
+    border: 1px solid rgb(75, 75, 233);
+    border-radius: 4px;
+    cursor: grab;
+}

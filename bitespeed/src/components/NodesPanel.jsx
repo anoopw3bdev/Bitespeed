@@ -1,3 +1,16 @@
+import { TextInputNode } from "./TextInputNode";
+import "../assets/styles/NodesPanel.css";
+
 export const NodesPanel = () => {
-  return <div>Nodes Panlel</div>;
+  const onDragStart = (event, nodeType) => {
+    console.log(nodeType);
+    event.dataTransfer.setData("application/reactflow", nodeType);
+    event.dataTransfer.effectAllowed = "move";
+  };
+
+  return (
+    <div className="nodes-panel">
+      <TextInputNode onDragStart={onDragStart} />
+    </div>
+  );
 };

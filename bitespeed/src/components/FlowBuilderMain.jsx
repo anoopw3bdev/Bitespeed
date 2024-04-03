@@ -6,10 +6,9 @@ export const FlowBuilderMain = () => {
   return (
     <div className="flow-builder-main">
       <div className="flow-builder-main__flow-builder">
-        <FlowBuilder />
-      </div>
-      <div className="flow-builder-main__nodes-panel">
-        <NodesPanel />
+        <FlowBuilder>
+          <NodesPanel />
+        </FlowBuilder>
       </div>
     </div>
   );

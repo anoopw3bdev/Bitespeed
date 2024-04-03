@@ -1,9 +1,9 @@
 .flow-builder-main {
     display: flex;
     height: 100%;
+    background: transparent;
 }
 
 .flow-builder-main__flow-builder {
-    width: 72%;
-    border-right: 1px solid rgb(203, 203, 203);
+    width: 100%;
 }
