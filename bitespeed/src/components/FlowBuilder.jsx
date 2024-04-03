@@ -1,5 +1,9 @@
 import { useState, useRef, useCallback } from "react";
-import ReactFlow, { ReactFlowProvider, addEdge } from "reactflow";
+import ReactFlow, {
+  ReactFlowProvider,
+  addEdge,
+  MarkerType,
+} from "reactflow";
 import "reactflow/dist/style.css";
 import "../assets/styles/FlowBuilder.css";
 import { useUniqueId } from "../hooks/useUniqueId";
@@ -25,7 +29,10 @@ export const FlowBuilder = ({
   const getUniqueId = useUniqueId();
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) => {
+      (params.markerEnd = { type: MarkerType.ArrowClosed }),
+        setEdges((eds) => addEdge(params, eds));
+    },
     [setEdges]
   );
 
