@@ -4,11 +4,13 @@
 }
 
 .custom-node__header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(164, 240, 233);
-    height: 24px;
+    background: rgb(164, 240, 233);
+    height: 22px;
     padding: 5px;
 }
 
