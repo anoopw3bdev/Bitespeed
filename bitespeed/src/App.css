@@ -1,4 +1,9 @@
-/* #root {
-  max-width: 1280px;
+#root{
+  height: 100vh;
 }
- */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
