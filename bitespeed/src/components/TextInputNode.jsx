@@ -36,7 +36,7 @@ export const TextInputNode = ({
             <div className="text-input-node__title">Message</div>
           </div>
           <div className="text-input-node__text-area">
-            <div>Text</div>
+            <span>Text</span>
             <textarea
               onChange={(e) => {
                 setText(e.target.value);

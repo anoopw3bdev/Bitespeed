@@ -17,6 +17,7 @@
 .text-input-node__title{
     flex: auto;
     text-align: center;
+    font-weight: 600;
 }
 
 .text-input-node__text-area {
@@ -33,4 +34,11 @@
 
 .text-input-node__back-icon{
     cursor: pointer;
+}
+
+.text-input-node__text-area > span{
+    display: block;
+    margin-bottom: 10px;
+    color: gray;
+    font-weight: 500;
 }
