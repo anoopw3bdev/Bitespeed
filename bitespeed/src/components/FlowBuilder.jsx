@@ -1,17 +1,30 @@
 import { useState, useRef, useCallback } from "react";
-import ReactFlow, { ReactFlowProvider, addEdge, useNodesState, useEdgesState, Controls } from "reactflow";
+import ReactFlow, { ReactFlowProvider, addEdge } from "reactflow";
 import "reactflow/dist/style.css";
 import "../assets/styles/FlowBuilder.css";
+import { useUniqueId } from "../hooks/useUniqueId";
 
-let id = 0;
-const getId = () => `dndnode_${id++}`;
-export const FlowBuilder = ({ children }) => {
+export const FlowBuilder = ({
+  children,
+  nodes,
+  setNodes,
+  onNodesChange,
+  edges,
+  setEdges,
+  onEdgesChange,
+  setIsNodeSelected,
+  setCurrentSelection,
+}) => {
   const reactFlowWrapper = useRef(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  const getUniqueId = useUniqueId();
+
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges]
+  );
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -22,7 +35,9 @@ export const FlowBuilder = ({ children }) => {
     (event) => {
       event.preventDefault();
 
-      const type = event.dataTransfer.getData("application/reactflow");
+      const type = event.dataTransfer.getData(
+        "application/reactflow"
+      );
 
       if (typeof type === "undefined" || !type) {
         return;
@@ -34,17 +49,22 @@ export const FlowBuilder = ({ children }) => {
       });
 
       const newNode = {
-        id: getId(),
+        id: getUniqueId(),
         position,
-        data: { label: `${type} node` },
+        data: { label: "Test message" },
         sourcePosition: "right",
         targetPosition: "left",
       };
 
-      setNodes((nds) => nds.concat(newNode));
+      setNodes((prevVal) => prevVal.concat(newNode));
     },
-    [reactFlowInstance, setNodes]
+    [reactFlowInstance, setNodes, getUniqueId]
   );
+
+  const onNodeClick = (_, object) => {
+    setCurrentSelection(object);
+    setIsNodeSelected(true);
+  };
 
   return (
     <div className="flow-builder dndflow">
@@ -59,10 +79,9 @@ export const FlowBuilder = ({ children }) => {
             onInit={setReactFlowInstance}
             onDrop={onDrop}
             onDragOver={onDragOver}
+            onNodeClick={onNodeClick}
             fitView
-          >
-            <Controls />
-          </ReactFlow>
+          />
         </div>
         {children}
       </ReactFlowProvider>
