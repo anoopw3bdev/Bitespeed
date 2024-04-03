@@ -9,3 +9,8 @@
     flex-grow: 1;
     height: 100%;
 }
+
+.flow-builder .react-flow__node {
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

@@ -3,7 +3,6 @@ import "../assets/styles/NodesPanel.css";
 
 export const NodesPanel = () => {
   const onDragStart = (event, nodeType) => {
-    console.log(nodeType);
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
   };
