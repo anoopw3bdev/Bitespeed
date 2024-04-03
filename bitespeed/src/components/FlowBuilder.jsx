@@ -3,6 +3,9 @@ import ReactFlow, { ReactFlowProvider, addEdge } from "reactflow";
 import "reactflow/dist/style.css";
 import "../assets/styles/FlowBuilder.css";
 import { useUniqueId } from "../hooks/useUniqueId";
+import { CustomNode } from "./CustomNode";
+
+const nodeTypes = { textUpdater: CustomNode };
 
 export const FlowBuilder = ({
   children,
@@ -51,6 +54,7 @@ export const FlowBuilder = ({
       const newNode = {
         id: getUniqueId(),
         position,
+        type: "textUpdater",
         data: { label: "Test message" },
         sourcePosition: "right",
         targetPosition: "left",
@@ -80,6 +84,7 @@ export const FlowBuilder = ({
             onDrop={onDrop}
             onDragOver={onDragOver}
             onNodeClick={onNodeClick}
+            nodeTypes={nodeTypes}
             fitView
           />
         </div>

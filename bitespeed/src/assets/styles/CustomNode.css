@@ -1,0 +1,39 @@
+.custom-node {
+    width: 200px;
+    min-height: 70px;
+}
+
+.custom-node__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(164, 240, 233);
+    height: 24px;
+    padding: 5px;
+}
+
+.custom-node__header >div {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+}
+
+.custom-node__whatsapp-icon {
+    background-color: white;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.custom-node__title {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.custom-node__text {
+    padding: 6px;
+    font-size: 14px;
+}
+
+.custom-node__whatsapp-icon >svg {
+    fill: green;
+}
