@@ -30,10 +30,21 @@ export const FlowBuilder = ({
 
   const onConnect = useCallback(
     (params) => {
+      // check if another edge started from this source
+      const hasExistingConnection = edges.find(
+        (edge) =>
+          edge.source === params.source &&
+          edge.sourceHandle === "source"
+      );
+
+      if (hasExistingConnection) {
+        return false;
+      }
+      // markerEnd to show the arrow icon in the edge
       (params.markerEnd = { type: MarkerType.ArrowClosed }),
         setEdges((eds) => addEdge(params, eds));
     },
-    [setEdges]
+    [edges, setEdges]
   );
 
   const onDragOver = useCallback((event) => {

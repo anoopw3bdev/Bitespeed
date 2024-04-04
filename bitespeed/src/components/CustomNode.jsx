@@ -10,7 +10,7 @@ export const CustomNode = ({ data }) => {
 
   return (
     <div className="custom-node">
-      <Handle type="target" position={Position.Left} />
+      <Handle type="target" position={Position.Left} id="target" />
       <div className="custom-node__header">
         <div>
           <BiMessageRoundedDetail />
@@ -21,7 +21,7 @@ export const CustomNode = ({ data }) => {
         </div>
       </div>
       <div className="custom-node__text">{data?.label}</div>
-      <Handle type="source" position={Position.Right} id="a" />
+      <Handle type="source" position={Position.Right} id="source" />
     </div>
   );
 };
