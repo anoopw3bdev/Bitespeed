@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { FlowBuilder } from "./FlowBuilder";
 import { NodesPanel } from "./NodesPanel";
-import { useNodesState, useEdgesState } from "reactflow";
-import { initialNodes } from "../constants/initialNodes";
 import "../assets/styles/FlowBuilderMain.css";
 
-export const FlowBuilderMain = () => {
+export const FlowBuilderMain = ({
+  nodes,
+  setNodes,
+  onNodesChange,
+  edges,
+  setEdges,
+  onEdgesChange,
+}) => {
   const [currentSelection, setCurrentSelection] = useState({});
   const [isNodeSelected, setIsNodeSelected] = useState(false);
-
-  const [nodes, setNodes, onNodesChange] =
-    useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   return (
     <div className="flow-builder-main">

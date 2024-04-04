@@ -69,11 +69,13 @@ export const FlowBuilder = ({
         y: event.clientY,
       });
 
+      const { id, value } = getUniqueId();
+
       const newNode = {
-        id: getUniqueId(),
+        id: value,
         position,
         type: "textUpdater",
-        data: { label: "Test message" },
+        data: { label: `Test message ${id}` },
         sourcePosition: "right",
         targetPosition: "left",
       };
