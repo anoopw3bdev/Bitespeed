@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { BiArrowBack } from "react-icons/bi";
 
@@ -11,11 +11,12 @@ export const TextInputNode = ({
   setIsNodeSelected,
   currentSelection,
 }) => {
-  const [text, setText] = useState(
-    currentSelection?.data?.label
-      ? currentSelection?.data?.label
-      : "Test message"
-  );
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    setText(currentSelection?.data?.label);
+  }, [currentSelection?.data?.label]);
+
   return (
     <>
       {isNodeSelected ? (
